@@ -22,7 +22,7 @@ the params directly.
 */
 def call(String commitVariableName, String paramVariableName = "null") {
     def gitLog() { 
-      ['git', 'log', "--pretty=%B"].execute().text.trim() 
+      ['git', 'log', "--pretty=%%B"].execute().text.trim() 
     }
     String message = sh (gitlog(), returnStdout: true).trim()
     def words = message.split(/\s/)
