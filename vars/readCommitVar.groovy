@@ -21,10 +21,7 @@ Of course this would mean using an environment variable instead of referencing
 the params directly.
 */
 def call(String commitVariableName, String paramVariableName = "null") {
-    def gitLog() { 
-      ['git', 'log', '-1'].execute().text.trim() 
-    }
-    String message = sh (gitlog(), returnStdout: true).trim()
+    String message = sh (script: 'git log -1', returnStdout: true).trim()
     def words = message.split(/\s/)
 
     for (String word : words) {
